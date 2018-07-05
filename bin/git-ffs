@@ -1,0 +1,5 @@
+#!/bin/bash
+FEATURE_NAME=${1}
+DEVELOP=$(git config --get gitflow.branch.develop)
+git check ${DEVELOP}
+git flow feature start ${FEATURE_NAME}

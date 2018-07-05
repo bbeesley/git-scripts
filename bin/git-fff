@@ -1,0 +1,3 @@
+#!/bin/bash
+FEATURE_NAME=$(git feat-name)
+git flow feature finish -F "${FEATURE_NAME}"

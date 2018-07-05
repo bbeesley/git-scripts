@@ -1,0 +1,3 @@
+#!/bin/sh
+FEATURE_PREFIX=$(git config --get gitflow.prefix.feature)
+git status -sb -uno | grep -o "${FEATURE_PREFIX}.*$" | sed "s|${FEATURE_PREFIX}||"
