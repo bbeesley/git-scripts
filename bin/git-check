@@ -1,0 +1,4 @@
+#!/bin/sh
+TARGET_BRANCH=${1}
+git checkout ${TARGET_BRANCH}
+git pull

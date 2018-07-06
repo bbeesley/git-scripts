@@ -1,0 +1,9 @@
+#!/bin/sh
+VERSION=${1}
+DEVELOP=$(git config --get gitflow.branch.develop)
+MASTER=$(git config --get gitflow.branch.master)
+
+git check ${MASTER}
+git check ${DEVELOP}
+
+git flow release start "${VERSION}"

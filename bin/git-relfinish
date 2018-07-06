@@ -1,0 +1,11 @@
+#!/bin/sh
+VERSION=${1}
+DEVELOP=$(git config --get gitflow.branch.develop)
+MASTER=$(git config --get gitflow.branch.master)
+RELEASE_PREFIX=$(git config --get gitflow.prefix.release)
+
+git check ${MASTER}
+git check ${DEVELOP}
+
+git flow release finish -p "${VERSION}"
+git push --tags
