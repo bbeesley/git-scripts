@@ -8,3 +8,4 @@ git check ${MASTER}
 git check ${DEVELOP}
 
 git flow release finish -p "${VERSION}"
+git push --tags
