@@ -1,0 +1,8 @@
+#!/bin/sh
+VERSION=$(git flow release list | grep -o "\d\+\.\d\+\.\d\+$" | sort --version-sort | tail -n 1)
+DEVELOP=$(git config --get gitflow.branch.develop)
+RELEASE_PREFIX=$(git config --get gitflow.prefix.release)
+
+git check ${DEVELOP}
+
+git br -D "${RELEASE_PREFIX}${VERSION}"
