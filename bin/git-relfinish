@@ -1,8 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 VERSION=${1}
 DEVELOP=$(git config --get gitflow.branch.develop)
 MASTER=$(git config --get gitflow.branch.master)
 RELEASE_PREFIX=$(git config --get gitflow.prefix.release)
+
+if [ -e package.json ]; then
+    VERSION=$(grep version package.json | grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+")
+    yarn install
+    yarn compile
+    npm publish
+fi
+
+if [ -z "${VERSION}" ]
+then
+      echo "No version found in package.json and none provided as arg"
+      exit 1
+fi
 
 git check ${MASTER}
 git check ${DEVELOP}
